@@ -60,6 +60,10 @@ function render(
     ...callbackOptions,
   })
 
+  if (Component.fetch) {
+    Component.fetch.call(wrapper.vm)
+  }
+
   mountedWrappers.add(wrapper)
   container.appendChild(wrapper.element)
 
