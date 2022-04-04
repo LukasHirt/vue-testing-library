@@ -75,3 +75,17 @@ test('baseElement matches container if not custom baseElement is provided', () =
     </blink>
   `)
 })
+
+test('calls Nuxt.js fetch hook', () => {
+  const mockedFn = jest.fn()
+  const Component = {
+    template: '<div />',
+    fetch() {
+      mockedFn()
+    },
+  }
+
+  render(Component)
+
+  expect(mockedFn).toHaveBeenCalledTimes(1)
+})
